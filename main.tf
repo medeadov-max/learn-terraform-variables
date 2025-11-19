@@ -6,8 +6,6 @@ terraform {
   }  
 }
 
-
-
 provider "aws" {
   region = var.aws_region
 }
@@ -100,8 +98,8 @@ module "elb_http" {
 module "ec2_instances" {
   source = "./modules/aws-instance"
 
-  instance_count = var.instance_count
-  instance_type  = var.instance_type
+  instance_count     = var.instance_count
+  instance_type      = var.instance_type
   subnet_ids         = module.vpc.private_subnets[*]
   security_group_ids = [module.app_security_group.this_security_group_id]
 
